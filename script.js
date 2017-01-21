@@ -37,8 +37,7 @@
         var days = $(this).attr("title");
         var id = $(this).prev().text();
         var user = {};
-        user.days = days;
-        user.id = id;        
+        user[id]=days;
         usersJson.push(user);
         localStorage.setItem("users",JSON.stringify(usersJson));        
     });
