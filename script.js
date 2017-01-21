@@ -11,12 +11,14 @@
 (function() {
     'use strict';
             
+    var limit=2;
     var usersJson;
     var usersStr = localStorage.getItem("users");
     console.log("usersStr= "+usersStr);
     if(usersStr===null || usersStr==="null")
     {
-        usersJson = [{"id":"jagga","days":15}];
+        //usersJson = [{"id":"jagga","days":15}];
+        usersJson = {};
         console.log("usersJson= "+usersJson);
         console.log("stringified= "+JSON.stringify(usersJson));
         localStorage.setItem("users",JSON.stringify(usersJson));
@@ -36,14 +38,13 @@
     $.each($(".tagline > span.flair"), function( i, l ){
         var days = $(this).attr("title");
         var id = $(this).prev().text();
-        var user = {};
-        user[id]=days;
-        usersJson.push(user);
+        //var user = {};
+        usersJson[id]=days.slice(0,-5);
+        //usersJson.push(user);
         localStorage.setItem("users",JSON.stringify(usersJson));        
     });
 
-    console.log("redditscript");
-    var limit=5;
+    console.log("redditscript");    
     var i = Number(localStorage.getItem("RedditCounter"));
     console.log(i);
     if(i<limit && i>-1)
