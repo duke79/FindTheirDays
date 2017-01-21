@@ -12,12 +12,17 @@
     'use strict';
 
     console.log("redditscript");
+    var limit=5;
     var i = Number(localStorage.getItem("RedditCounter"));
     console.log(i);
-    if(i<5)
+    if(i<limit && i>-1)
     {
         var pos=25*i;
         window.location.href="https://www.reddit.com/r/NoFap/new/?count="+pos+"&after=t3_5pat86";        
+    }
+    else if(i>=limit)
+    {
+      i=-1;    
     }
     i=i+1;
     localStorage.setItem("RedditCounter",i);
