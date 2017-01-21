@@ -58,5 +58,17 @@
     }
     i=i+1;
     localStorage.setItem("RedditCounter",i);
-    window.history.back();
+    //window.history.back();
+    var sortable = [];
+    for (var user in usersJson)
+        sortable.push([user, usersJson[user]]);
+
+    sortable.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+
+    for(var j=0;j<sortable.length;j++)
+    {
+        console.log(sortable[j][0]+" = "+sortable[j][1]);
+    }
 })();
